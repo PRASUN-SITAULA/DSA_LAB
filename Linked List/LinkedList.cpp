@@ -1,5 +1,4 @@
 #include<iostream>
-
 struct Node{
     int data;
     Node *next;
@@ -33,12 +32,19 @@ int insertAtEnd(int item){
 int insertAfterSpecificNode(int value, int item){
     temp = start;
     Node *newNode = new Node;
+    newNode -> data = item;
     while(temp -> data != value){
         temp = temp -> next;
     }
-    newNode -> next = temp -> next;
-    temp -> next = newNode;
-    newNode -> data = item;
+    //if the element is to be inserted after final node
+    if(temp -> next == NULL){
+        temp -> next = newNode;
+        newNode -> next = NULL;
+    }
+    else{
+        newNode -> next = temp -> next;
+        temp -> next = newNode;
+    }
     return 0;
 }
 
@@ -84,11 +90,15 @@ int deleteFromBeginning(){
     }
     temp = start;
     start = start -> next;
-    return temp->data;
+    int deletedElement =  temp->data;
     free (temp);
+    return deletedElement;
 }
 
 int deleteFromEnd(){
+    if(start == NULL){
+        std::cout<<"List is empty";
+    }
     temp = start;
     while(temp -> next -> next != NULL){
         temp = temp -> next;
@@ -123,6 +133,10 @@ int main()
     insertAtEnd(5);
     insertAfterSpecificNode(30, 50);
     insertBeforeSpecificNode(45, 90);
+    insertAfterSpecificNode(5, 68);
+    deleteFromBeginning();
+    deleteFromEnd();
+    deleteAfterSpecificNode(30);
     displayNodeElements();
     return 0;
 }
