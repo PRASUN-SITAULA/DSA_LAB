@@ -133,15 +133,15 @@ int deleteAfterSpecificNode(int element){
 
 int deleteBeforeSpecificNode(int element){
     temp = start;
-    Node *pretemp;
+    Node *preptr;
     while(temp -> next -> data != element){
-        temp = temp ->next;
+        preptr = temp;
+        temp = temp -> next;
     }
-    pretemp = temp -> next;
-    temp -> next -> next -> prev = temp;
-    int removedElement = pretemp -> data;
-    free(temp -> next);
-    temp -> next = pretemp -> next;
+    preptr -> next = temp -> next;
+    temp -> next -> prev = preptr;
+    int removedElement = temp -> data;
+    free(temp);
     return removedElement;
 }
 
@@ -159,6 +159,7 @@ int main()
     deleteFromBeginning();
     deleteFromEnd();
     deleteAfterSpecificNode(30);
+    deleteBeforeSpecificNode(20);
     displayNodeElements();
     return 0;
 }
