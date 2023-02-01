@@ -3,11 +3,8 @@ struct Node{
     int data;
     Node *next;
 };
-
 Node *rear = NULL;
 Node *front = NULL;
-
-
 //insertion operations
 int enqueue(int item){
     Node *newNode = new Node;
@@ -25,7 +22,6 @@ int enqueue(int item){
     }
     return 0;
 }
-
 //deletion operations
 int dequeue(){
     Node *temp = new Node;
@@ -38,7 +34,6 @@ int dequeue(){
     delete (temp);
     return deletedElement;
 }
-
 int displayNodeElements(){
     Node *temp = new Node;
     temp = front;
@@ -49,12 +44,9 @@ int displayNodeElements(){
     return 0;
 }
 
-
 int main()
-{
-    enqueue(10);
+{   enqueue(10);
     enqueue(5);
     std::cout<<"The deleted element is "<<dequeue()<<std::endl;
     displayNodeElements();
-    return 0;
-}
+    return 0;}

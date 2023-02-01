@@ -1,13 +1,10 @@
 #include<iostream>
-
 struct Node{
     int data;
     Node *next;
 };
-
 Node* top = NULL;
 Node *temp = new Node;
-
 //push operations
 int push(int item){
     Node* newNode = new Node;
@@ -16,7 +13,6 @@ int push(int item){
     top = newNode;
     return 0;
 }
-
 //pop operations
 int pop(){
     if(top == NULL){
@@ -28,7 +24,6 @@ int pop(){
     free (temp);
     return deletedElement;
 }
-
 int displayNodeElements(){
     temp = top;
     while(temp != NULL){
@@ -37,7 +32,6 @@ int displayNodeElements(){
     }
     return 0;
 }
-
 int main()
 {
     int deleteItem;
